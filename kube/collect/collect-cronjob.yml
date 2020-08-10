@@ -1,0 +1,19 @@
+apiVersion: batch/v1beta1
+kind: CronJob
+metadata:
+  name: collect
+spec:
+  schedule: "0 * * * *"
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          containers:
+            - name: collect
+              image: collect:v1
+              envFrom:
+                - secretRef:
+                    name: collect-secrets
+                - configMapRef:
+                    name: collect-cfgmaps
+          restartPolicy: OnFailure

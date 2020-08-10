@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: sheets-cfgmaps
+data:
+  MONGO_HOST: 10.10.10.10
+  MONGO_DATABASE_NAME: coti
+  MONGO_COLLECTION_NAME: transaction
+  RABBIT_HOST: 10.10.10.10
+  QUEUE_NAME: new_transactions
+  GSHEET_NAME: Test

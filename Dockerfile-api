@@ -1,0 +1,9 @@
+FROM python:3.8-slim-buster
+
+EXPOSE 5000
+ENV TZ="Europe/Amsterdam"
+COPY api/ mongo_collection.py /src/
+RUN pip install -r /src/requirements.txt
+
+WORKDIR /src
+ENTRYPOINT [ "python", "server.py" ]

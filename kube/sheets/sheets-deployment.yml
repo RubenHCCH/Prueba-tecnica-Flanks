@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sheets
+  labels:
+    app: sheets
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: sheets
+  template:
+    metadata:
+      labels:
+        app: sheets
+    spec:
+      containers:
+        - name: sheets
+          image: sheets:v1
+          envFrom:
+            - secretRef:
+                name: sheets-secrets
+            - configMapRef:
+                name: sheets-cfgmaps

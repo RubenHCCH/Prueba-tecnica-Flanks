@@ -1,0 +1,8 @@
+FROM python:3.8-slim-buster
+
+ENV TZ="Europe/Amsterdam"
+COPY sheets/ mongo_collection.py rabbitMQ_channel.py /src/
+RUN pip install -r /src/requirements.txt
+
+WORKDIR /src
+ENTRYPOINT [ "python", "update_spreadsheets.py" ]
